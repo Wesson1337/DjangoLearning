@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from advertisement.models import Advertisement
@@ -20,3 +20,15 @@ class About(TemplateView):
         context['title'] = 'Прогулка с собаками'
         context['description'] = 'Гуляю с собакой недорого.'
         return context
+
+
+class AdvertisementListView(ListView):
+    model = Advertisement
+    template_name = 'advertisement_list.html'
+    context_object_name = 'advertisement_list'
+    queryset = Advertisement.objects.all()[:5]
+
+
+class AdvertisementDetailView(DetailView):
+    model = Advertisement
+    template_name = 'advertisement_detail.html'
