@@ -22,5 +22,6 @@ urlpatterns = [
     path('advertisement/', include('advertisement.urls')),
     path('profiles/', UserFromView.as_view()),
     path('profiles/<int:profile_id>/edit/', UserEditFormView.as_view()),
-    path('news/', include('news.urls'))
+    path('news/', include('news.urls')),
+    path('users/', include('users.urls')),
 ]
