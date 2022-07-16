@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -30,3 +30,12 @@ def login_view(request):
 
 class AnotherLoginView(LoginView):
     template_name = 'users/login.html'
+
+
+def main(request):
+    return render(request, 'users/main.html')
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponse('Вы успешно вышли')
