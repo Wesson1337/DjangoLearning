@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
-from django.shortcuts import render
-from users.forms import AuthForm
+from django.shortcuts import render, redirect
+from users.forms import AuthForm, ExtendedRegisterForm
+from users.models import Profile
 
 
 def login_view(request):
@@ -39,3 +41,40 @@ def main(request):
 def logout_view(request):
     logout(request)
     return HttpResponse('Вы успешно вышли')
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'users/register.html', {'form': form})
+
+
+def another_register_view(request):
+    if request.method == 'POST':
+        form = ExtendedRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            date_of_birth = form.cleaned_data.get('date_of_birth')
+            city = form.cleaned_data.get('city')
+            Profile.objects.create(
+                user=user,
+                city=city,
+                date_of_birth=date_of_birth
+            )
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = ExtendedRegisterForm()
+    return render(request, 'users/register.html', {'form': form})
