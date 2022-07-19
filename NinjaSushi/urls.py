@@ -24,4 +24,6 @@ urlpatterns = [
     path('profiles/<int:profile_id>/edit/', UserEditFormView.as_view()),
     path('news/', include('news.urls')),
     path('users/', include('users.urls')),
+    path('media/', include('media.urls')),
+    path('goods/', include('goods.urls'))
 ]

@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'advertisement',
     'profiles',
     'news',
-    'users'
+    'users',
+    'media',
+    'goods'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,5 @@ LOGIN_REDIRECT_URL = '/'
 
 SESSION_COOKIE_NAME = 'login'
 SESSION_COOKIE_AGE = 30 * 24 * 60 * 60
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
