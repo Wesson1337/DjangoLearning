@@ -25,5 +25,6 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('users/', include('users.urls')),
     path('media/', include('media.urls')),
-    path('goods/', include('goods.urls'))
+    path('goods/', include('goods.urls')),
+    path('logic/', include('logic.urls'))
 ]
