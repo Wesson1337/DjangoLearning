@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'users',
     'media',
     'goods',
-    'logic'
+    'logic',
+    'pages'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'NinjaSushi.urls'
@@ -120,7 +122,16 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
+
+LANGUAGES = [
+    ('ru', 'Русский'),
+    ('en', 'English')
+]
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'),]
 
 
 # Static files (CSS, JavaScript, Images)
