@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'media',
     'goods',
     'logic',
-    'pages'
+    'pages',
+    'rest_framework',
+    'rest_app',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'NinjaSushi.urls'
@@ -79,6 +81,12 @@ TEMPLATES = [
         },
     },
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    }
+}
 
 WSGI_APPLICATION = 'NinjaSushi.wsgi.application'
 

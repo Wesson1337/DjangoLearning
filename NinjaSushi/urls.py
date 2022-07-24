@@ -28,5 +28,6 @@ urlpatterns = [
     path('goods/', include('goods.urls')),
     path('logic/', include('logic.urls')),
     path('pages/', include('pages.urls')),
-    path('118n', include('django.conf.urls.i18n'))
+    path('i18n', include('django.conf.urls.i18n')),
+    path('rest_app/', include('rest_app.urls'))
 ]
