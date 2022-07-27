@@ -15,9 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
 from profiles.views import UserFromView, UserEditFormView
 
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Snippets API",
+      default_version='v1',
+      description="Описание проекта",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny],
+)
+
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('advertisement/', include('advertisement.urls')),
     path('profiles/', UserFromView.as_view()),
@@ -30,5 +48,7 @@ urlpatterns = [
     path('pages/', include('pages.urls')),
     path('i18n', include('django.conf.urls.i18n')),
     path('rest_app/', include('rest_app.urls')),
-    path('lib/', include('books.urls'))
+    path('lib/', include('books.urls')),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui')
 ]
+
