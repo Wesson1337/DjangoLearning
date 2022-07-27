@@ -1,4 +1,4 @@
-"""NinjaSushi URL Configuration
+"""DjangoLearning URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -29,5 +29,6 @@ urlpatterns = [
     path('logic/', include('logic.urls')),
     path('pages/', include('pages.urls')),
     path('i18n', include('django.conf.urls.i18n')),
-    path('rest_app/', include('rest_app.urls'))
+    path('rest_app/', include('rest_app.urls')),
+    path('lib/', include('books.urls'))
 ]
