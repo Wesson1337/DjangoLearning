@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Posts</title>
+</head>
+<body>
+<ul>
+{% for post in posts %}
+  <li>
+  <p>Blog: {{ post.blog }}</p>
+  <p>Authors:</p>
+  <ul>
+    {% for author in post.author.all %}
+      <li><p>{{ author.name }}</p></li>
+    {% endfor %}
+  </ul>
+  <p>Title: {{ post.title }}</p>
+  </li>
+{% endfor %}
+</ul>
+</body>
+</html>

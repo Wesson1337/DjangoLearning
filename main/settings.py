@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'books',
     'django_filters',
     'django.contrib.admindocs',
-    'drf_yasg'
+    'drf_yasg',
+    'blog'
 ]
 
 MIDDLEWARE = [
