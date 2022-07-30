@@ -1,4 +1,6 @@
 Django==4.0.6
+django_debug_toolbar==3.5.0
 django_filter==22.1
 djangorestframework==3.13.1
+drf_yasg==1.21.3
 python-dotenv==0.20.0
